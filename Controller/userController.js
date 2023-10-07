@@ -40,3 +40,62 @@ exports.createUser = async (req, res) => {
         })
     }
 }
+
+exports.getUser = async(req,res)=>{
+    try {
+        await User.find({},(err,data)=>{
+            if(err){
+                throw new Error('Something went wrong')
+            }
+            res.status(200).json({
+                success:true,
+                message:"Users fetched successfully",
+                data
+            })
+        });
+
+        // await User.find({})
+        // .then((data)=>{
+        //     res.status(200).json({
+        //         success:true,
+        //         message:"Users fetched successfully",
+        //         data
+        //     })
+        // })
+        // .catch((err)=>{
+        //     console.log(err);
+        //     throw new Error('Something went wrong');
+        // })
+        
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({
+            success: false,
+            messsage: error.message
+        })
+    }
+}
+
+exports.editUser = async(req,res)=>{
+    try {
+        
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({
+            success:false,
+            message:error.message
+        })
+    }
+}
+
+exports.deleteUser= async(req,res)=>{
+    try {
+        
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({
+            success:false,
+            message:error.message
+        })
+    }
+}
