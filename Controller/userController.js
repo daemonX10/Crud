@@ -4,7 +4,7 @@ exports.home=(req,res)=>{
     res.send("hello world");
 }
 
-exports.createUser =  (req,res)=>{
+exports.createUser = async (req,res)=>{
     try {
         const {name,email} = req.body;
         if (!name || !email){
@@ -13,13 +13,13 @@ exports.createUser =  (req,res)=>{
 
         //  Check if user is already registered
 
-        const userExits = User.findOne({email});
+        const userExits = await User.findOne({email});
 
         if(userExits){
             throw new Error ("user already exits");
         }
 
-        const user = User.create({
+        const user = await User.create({
             name,
             email
         })
