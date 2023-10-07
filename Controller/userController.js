@@ -19,7 +19,7 @@ exports.createUser = async (req,res)=>{
             throw new Error ("user already exits");
         }
 
-        const user = User.create({
+        const user = await User.create({
             name,
             email
         })
